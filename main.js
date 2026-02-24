@@ -10,7 +10,7 @@ function createWindow() {
     }
   });
 
-  win.loadFile('index.html');
+  win.loadURL('https://cooplogin-avjdvwvq.manus.space');
 }
 
 app.whenReady().then(() => {
