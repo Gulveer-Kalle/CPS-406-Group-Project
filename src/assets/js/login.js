@@ -1,48 +1,51 @@
+// Password visibility toggle
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById('password');
+  const toggleBtn = document.querySelector('.toggle-password');
+  
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggleBtn.textContent = 'Hide';
+  } else {
+    passwordInput.type = 'password';
+    toggleBtn.textContent = 'Show';
+  }
+}
+
+// Form submission
 document.addEventListener('DOMContentLoaded', function() {
   const loginForm = document.getElementById('loginForm');
-  const registerForm = document.getElementById('registerForm');
-
+  
   if (loginForm) {
     loginForm.addEventListener('submit', function(e) {
-      e.preventDefault(); // prevent page reload
-
+      e.preventDefault();
+      
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
-
+      const successMessage = document.getElementById('successMessage');
+      
+      // Validate inputs
       if (!email || !password) {
         alert('Please fill in all fields');
         return;
       }
-
-      // Fake demo navigation
-      alert(`Logging in as ${email}`);
-      // Replace with real redirect after backend is ready
-      // window.location.href = 'studentDashboard.html';
-    });
-  }
-
-  if (registerForm) {
-    registerForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const confirmPassword = document.getElementById('confirmPassword').value.trim();
-
-      if (!name || !email || !password || !confirmPassword) {
-        alert('Please fill in all fields');
+      
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address');
         return;
       }
-
-      if (password !== confirmPassword) {
-        alert('Passwords do not match');
-        return;
-      }
-
-      // Demo success
-      alert(`Registered ${name} (${email}) successfully!`);
-      // window.location.href = 'login.html';
+      
+      // Show success message
+      successMessage.style.display = 'block';
+      
+      // Simulate login process
+      setTimeout(() => {
+        alert(`Logging in as ${email}`);
+        // TODO: Replace with actual backend authentication
+        // window.location.href = 'studentDashboard.html';
+      }, 1000);
     });
   }
 });

@@ -3,30 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - CPS 406 App</title>
+  <title>Login - Co-op Connect</title>
   <link rel="stylesheet" href="../assets/css/global.css">
   <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 <body>
   <div class="login-container">
-    <div class="login-card">
-      <h1>CPS 406 App</h1>
-      <p class="subtitle">Login to your account</p>
-      <form id="loginForm">
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Enter your email" required>
-        </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="login-btn">Login</button>
-        <p class="switch-text">
-          Don't have an account? <a href="register.html">Register</a>
-        </p>
-      </form>
+    <!-- Left Side: Logo and Branding -->
+    <div class="login-left">
+      <div class="logo-section">
+        <img src="../assets/images/Logo.png" alt="Logo" class="logo">
+      </div>
+    </div>
+
+    <!-- Right Side: Login Form -->
+    <div class="login-right">
+      <div class="login-card">
+        <h1>Sign In</h1>
+        <p class="form-subtitle">Enter your credentials to access your account</p>
+        
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="input-group password-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="password" placeholder="••••••••" required>
+              <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">Show</button>
+            </div>
+            <a href="#" class="forgot-link">Forgot?</a>
+          </div>
+
+          <button type="submit" class="login-btn">Sign In</button>
+
+          <div id="successMessage" class="success-message" style="display: none;">
+            ✓ Login successful!
+          </div>
+
+          <p class="switch-text">
+            Don't have an account? <a href="register.html">Create one here</a>
+          </p>
+        </form>
+
+        <p class="terms-text">By signing in, you agree to our Terms of Service and Privacy Policy</p>
+      </div>
     </div>
   </div>
+
+  <script src="../assets/js/login.js"></script>
 </body>
 </html>
