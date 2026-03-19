@@ -195,6 +195,57 @@ body {
   color: #0f2a7d;
 }
 
+.password-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.password-feedback.hidden {
+  display: none;
+}
+
+.password-checklist .rule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.password-checklist .rule::before {
+  width: 14px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.password-checklist .rule.valid {
+  color: #15803d;
+}
+
+.password-checklist .rule.valid::before {
+  content: '\2713';
+  color: #15803d;
+}
+
+.password-checklist .rule.invalid {
+  color: #b91c1c;
+}
+
+.password-checklist .rule.invalid::before {
+  content: '\2715';
+  color: #b91c1c;
+}
+
+.password-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #666;
+}
+
 /* Buttons */
 .register-btn {
   width: 100%;

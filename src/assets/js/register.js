@@ -8,6 +8,69 @@ const roleDescriptions = {
   employer: 'Employer partner access'
 };
 
+function hasSequentialChars(password) {
+  const normalized = password.toLowerCase();
+
+  for (let i = 0; i < normalized.length - 2; i++) {
+    const segment = normalized.slice(i, i + 3);
+    if (!/^[a-z0-9]{3}$/.test(segment)) {
+      continue;
+    }
+
+    const first = segment.charCodeAt(0);
+    const second = segment.charCodeAt(1);
+    const third = segment.charCodeAt(2);
+
+    const ascending = second === first + 1 && third === second + 1;
+    const descending = second === first - 1 && third === second - 1;
+
+    if (ascending || descending) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function hasRepeatedChars(password) {
+  return /(.)\1/.test(password);
+}
+
+function validatePassword(password) {
+  const hasStartedTyping = password.length > 0;
+
+  return {
+    length: password.length > 8,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
+    special: /[^A-Za-z0-9]/.test(password),
+    number: /\d/.test(password),
+    repeated: hasStartedTyping && !hasRepeatedChars(password),
+    sequential: hasStartedTyping && !hasSequentialChars(password)
+  };
+}
+
+function updatePasswordChecklist(results) {
+  const ruleElements = {
+    length: document.getElementById('rule-length'),
+    uppercase: document.getElementById('rule-uppercase'),
+    lowercase: document.getElementById('rule-lowercase'),
+    special: document.getElementById('rule-special'),
+    number: document.getElementById('rule-number'),
+    repeated: document.getElementById('rule-repeated'),
+    sequential: document.getElementById('rule-sequential')
+  };
+
+  Object.entries(ruleElements).forEach(([ruleName, element]) => {
+    if (!element) {
+      return;
+    }
+
+    element.classList.toggle('valid', results[ruleName]);
+    element.classList.toggle('invalid', !results[ruleName]);
+  });
+}
+
 // Select role
 function selectRole(role) {
 
@@ -26,10 +89,13 @@ function selectRole(role) {
 }
 
 // Password visibility toggle
-function togglePasswordVisibility() {
+function togglePasswordVisibility(inputId, toggleBtn) {
 
-  const passwordInput = document.getElementById('password');
-  const toggleBtn = document.querySelector('.toggle-password');
+  const passwordInput = document.getElementById(inputId);
+
+  if (!passwordInput || !toggleBtn) {
+    return;
+  }
 
   if (passwordInput.type === 'password') {
     passwordInput.type = 'text';
@@ -45,20 +111,87 @@ function togglePasswordVisibility() {
 document.addEventListener('DOMContentLoaded', function () {
 
   const registerForm = document.getElementById('registerForm');
+  const firstNameInput = document.getElementById('firstName');
+  const lastNameInput = document.getElementById('lastName');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirmPassword');
+  const passwordFeedback = document.getElementById('passwordFeedback');
+  let hasOpenedPasswordFeedback = false;
+
+  function runPasswordValidation() {
+    const results = validatePassword(passwordInput ? passwordInput.value : '');
+
+    updatePasswordChecklist(results);
+    return results;
+  }
+
+  function shouldHidePasswordFeedback() {
+    const passwordValidation = runPasswordValidation();
+    const passwordsMatch =
+      !!passwordInput &&
+      !!confirmPasswordInput &&
+      confirmPasswordInput.value.length > 0 &&
+      passwordInput.value === confirmPasswordInput.value;
+
+    return Object.values(passwordValidation).every(Boolean) && passwordsMatch;
+  }
+
+  function showPasswordFeedback() {
+    hasOpenedPasswordFeedback = true;
+    if (passwordFeedback) {
+      passwordFeedback.classList.remove('hidden');
+    }
+    runPasswordValidation();
+  }
+
+  function maybeHidePasswordFeedback() {
+    setTimeout(() => {
+      const activeElement = document.activeElement;
+      const focusStayedInPasswordArea =
+        activeElement === passwordInput ||
+        activeElement === confirmPasswordInput;
+
+      if (!focusStayedInPasswordArea && shouldHidePasswordFeedback() && passwordFeedback) {
+        passwordFeedback.classList.add('hidden');
+      }
+    }, 0);
+  }
+
+  if (passwordInput) {
+    passwordInput.addEventListener('focus', showPasswordFeedback);
+    passwordInput.addEventListener('blur', maybeHidePasswordFeedback);
+  }
+
+  if (confirmPasswordInput) {
+    confirmPasswordInput.addEventListener('focus', showPasswordFeedback);
+    confirmPasswordInput.addEventListener('blur', maybeHidePasswordFeedback);
+  }
+
+  [firstNameInput, lastNameInput, emailInput, passwordInput, confirmPasswordInput].forEach(input => {
+    if (input) {
+      input.addEventListener('input', function () {
+        if (hasOpenedPasswordFeedback) {
+          runPasswordValidation();
+        }
+      });
+    }
+  });
 
   if (registerForm) {
     registerForm.addEventListener('submit', async function (e) {
 
       e.preventDefault();
 
-      const firstName = document.getElementById('firstName').value.trim();
-      const lastName = document.getElementById('lastName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
+      const firstName = firstNameInput.value.trim();
+      const lastName = lastNameInput.value.trim();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
       const successMessage = document.getElementById('successMessage');
 
       // Validate inputs
-      if (!firstName || !lastName || !email || !password) {
+      if (!firstName || !lastName || !email || !password || !confirmPassword) {
         alert('Please fill in all fields');
         return;
       }
@@ -70,9 +203,15 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // Validate password
-      if (password.length < 6) {
-        alert('Password must be at least 6 characters long');
+      showPasswordFeedback();
+      const passwordValidation = runPasswordValidation();
+      if (!Object.values(passwordValidation).every(Boolean)) {
+        alert('Please fix the password requirements before creating your account.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
         return;
       }
 
