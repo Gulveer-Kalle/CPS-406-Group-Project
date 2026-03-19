@@ -3,147 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Employer Dashboard - Co-op Connect</title>
+  <title>Employer Dashboard - Co-op Connect</title>
   <link rel="stylesheet" href="../assets/css/global.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 <body>
   <div class="dashboard-container">
-    <!-- Left Sidebar Navigation -->
     <aside class="sidebar">
       <div class="sidebar-header">
         <img src="../assets/images/Logo.png" alt="Logo" class="sidebar-logo">
         <h2 class="sidebar-title">Co-op Connect</h2>
       </div>
-      
       <nav class="sidebar-nav">
-<ul class="nav-list">
+        <ul class="nav-list">
           <li class="nav-item active" data-url="dashboard">
-            <span class="nav-icon">📊</span>
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </span>
             <span class="nav-text">Dashboard</span>
           </li>
-      <li class="nav-item" data-url="employees">
-            <span class="nav-icon">👥</span>
+          <li class="nav-item" data-url="employees">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
             <span class="nav-text">Employees</span>
           </li>
           <li class="nav-item" data-url="work-term-reports">
-            <span class="nav-icon">📋</span>
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+            </span>
             <span class="nav-text">Work-term Reports</span>
           </li>
           <li class="nav-item" data-url="evaluation-reports">
-            <span class="nav-icon">📈</span>
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </span>
             <span class="nav-text">Evaluation Reports</span>
           </li>
-          <li class="nav-item" data-url="profile">
-            <span class="nav-icon">⚙️</span>
+          <li class="nav-item nav-divider-above" data-url="profile">
+            <span class="nav-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
             <span class="nav-text">Profile</span>
           </li>
         </ul>
       </nav>
-      
       <div class="sidebar-footer">
         <button class="logout-btn" id="logoutBtn">
-          <span class="nav-icon">🚪</span>
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </span>
           <span class="nav-text">Logout</span>
         </button>
       </div>
     </aside>
 
-    <!-- Main Content Area -->
     <main class="main-content">
-      <!-- Dashboard Section -->
       <section class="content-section active" id="dashboard-section">
         <div class="content-header">
           <h1>Welcome, Employer!</h1>
-          <p class="content-subtitle">Manage your co-op positions and applicants</p>
+          <p class="content-subtitle">Manage your co-op students and evaluations</p>
         </div>
 
-        <!-- Statistic Cards -->
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-icon">📋</div>
-            <div class="stat-content">
-              <span class="stat-title">Active Postings</span>
-              <span class="stat-value">5</span>
+            <div class="stat-icon-svg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-          </div>
-          
-          <div class="stat-card">
-            <div class="stat-icon">👥</div>
             <div class="stat-content">
-              <span class="stat-title">Total Applicants</span>
-              <span class="stat-value">28</span>
-            </div>
-          </div>
-          
-          <div class="stat-card">
-            <div class="stat-icon">✓</div>
-            <div class="stat-content">
-              <span class="stat-title">Interviews Scheduled</span>
-              <span class="stat-value">8</span>
-            </div>
-          </div>
-          
-          <div class="stat-card">
-            <div class="stat-icon">🎓</div>
-            <div class="stat-content">
-              <span class="stat-title">Current Interns</span>
+              <span class="stat-title">Total Employees</span>
               <span class="stat-value">3</span>
             </div>
           </div>
+          <div class="stat-card">
+            <div class="stat-icon-svg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-title">Reports Received</span>
+              <span class="stat-value">5</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-svg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-title">Evaluations Submitted</span>
+              <span class="stat-value">4</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-svg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="stat-content">
+              <span class="stat-title">Pending Reviews</span>
+              <span class="stat-value">2</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Two Column Layout -->
         <div class="dashboard-grid">
-          <!-- Left Column - Recent Applications -->
           <div class="content-column">
             <div class="column-card">
-              <h2 class="column-title">Recent Applications</h2>
+              <h2 class="column-title">Recent Activity</h2>
               <div class="terms-list">
                 <div class="term-item">
                   <div class="term-info">
-                    <span class="term-season">John Smith</span>
-                    <span class="term-employer">Software Developer Intern</span>
-                    <span class="term-grade">Applied 2 hours ago</span>
+                    <span class="term-season">Report Received</span>
+                    <span class="term-employer">John Smith submitted work-term report</span>
+                    <span class="term-grade">2 hours ago</span>
                   </div>
                   <div class="term-status">
-                    <span class="status-badge pending">Under Review</span>
+                    <span class="status-badge pending">Pending Review</span>
                     <button class="quick-view-btn">View</button>
                   </div>
                 </div>
-                
                 <div class="term-item">
                   <div class="term-info">
-                    <span class="term-season">Sarah Johnson</span>
-                    <span class="term-employer">Data Analyst Intern</span>
-                    <span class="term-grade">Applied 5 hours ago</span>
+                    <span class="term-season">Evaluation Submitted</span>
+                    <span class="term-employer">Sarah Johnson — Mid-term evaluation</span>
+                    <span class="term-grade">5 hours ago</span>
                   </div>
                   <div class="term-status">
-                    <span class="status-badge completed">Interview Scheduled</span>
+                    <span class="status-badge completed">Submitted</span>
                     <button class="quick-view-btn">View</button>
                   </div>
                 </div>
-                
                 <div class="term-item">
                   <div class="term-info">
-                    <span class="term-season">Mike Davis</span>
-                    <span class="term-employer">UX Designer Intern</span>
-                    <span class="term-grade">Applied 1 day ago</span>
+                    <span class="term-season">New Employee</span>
+                    <span class="term-employer">Mike Davis started Winter 2024 term</span>
+                    <span class="term-grade">1 day ago</span>
                   </div>
                   <div class="term-status">
-                    <span class="status-badge pending">Under Review</span>
-                    <button class="quick-view-btn">View</button>
+                    <span class="status-badge completed">Active</span>
                   </div>
                 </div>
-                
                 <div class="term-item">
                   <div class="term-info">
-                    <span class="term-season">Emily Chen</span>
-                    <span class="term-employer">Marketing Intern</span>
-                    <span class="term-grade">Applied 2 days ago</span>
+                    <span class="term-season">Report Received</span>
+                    <span class="term-employer">Emily Chen submitted work-term report</span>
+                    <span class="term-grade">2 days ago</span>
                   </div>
                   <div class="term-status">
-                    <span class="status-badge completed">Offer Sent</span>
+                    <span class="status-badge completed">Reviewed</span>
                     <button class="quick-view-btn">View</button>
                   </div>
                 </div>
@@ -151,29 +156,33 @@
             </div>
           </div>
 
-          <!-- Right Column - Quick Actions -->
           <div class="content-column">
             <div class="column-card">
               <h2 class="column-title">Quick Actions</h2>
               <div class="actions-list">
-                <button class="action-btn">
-                  <span class="action-icon">➕</span>
-                  <span class="action-text">Post New Job</span>
-                </button>
-                
-                <button class="action-btn">
-                  <span class="action-icon">📋</span>
-                  <span class="action-text">Review Applications</span>
-                </button>
-                
-                <button class="action-btn">
-                  <span class="action-icon">📊</span>
-                  <span class="action-text">View Reports</span>
-                </button>
-                
-                <button class="action-btn">
-                  <span class="action-icon">👤</span>
+                <button class="action-btn" data-nav="profile">
+                  <span class="action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="14" r="2"/></svg>
+                  </span>
                   <span class="action-text">Company Profile</span>
+                </button>
+                <button class="action-btn" data-nav="employees">
+                  <span class="action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </span>
+                  <span class="action-text">View Employees</span>
+                </button>
+                <button class="action-btn" data-nav="evaluation-reports">
+                  <span class="action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  </span>
+                  <span class="action-text">Submit Evaluation Report</span>
+                </button>
+                <button class="action-btn" data-nav="work-term-reports">
+                  <span class="action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+                  </span>
+                  <span class="action-text">View Work-term Reports</span>
                 </button>
               </div>
             </div>
@@ -181,16 +190,13 @@
         </div>
       </section>
 
-      <!-- Subscreen Loader -->
-      <div id="subscreen-container" class="content-section active"></div>
+      <div id="subscreen-container" class="content-section"></div>
     </main>
   </div>
 
-  <!-- Firebase SDK via CDN -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  
   <script src="../assets/js/firebase.js"></script>
   <script src="../assets/js/navigation.js"></script>
   <script src="../assets/js/partner.js"></script>

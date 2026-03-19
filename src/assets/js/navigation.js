@@ -152,3 +152,48 @@ function initializeActionButtons(actionsConfig = {}) {
   });
 }
 
+
+// Quick Action nav buttons (data-nav attribute)
+// Runs after DOM is ready; also called after subscreen loads
+function initializeNavButtons() {
+  const navBtns = document.querySelectorAll('.action-btn[data-nav]');
+  navBtns.forEach(btn => {
+    // Avoid double-binding
+    if (btn.dataset.navBound) return;
+    btn.dataset.navBound = 'true';
+    btn.addEventListener('click', function () {
+      const target = this.getAttribute('data-nav');
+      const navItem = document.querySelector(`.nav-item[data-url="${target}"]`);
+      if (navItem) navItem.click();
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  initializeNavButtons();
+
+  // Student dashboard: coordinator / employer header buttons
+  const coordBtn = document.getElementById('viewCoordinatorBtn');
+  if (coordBtn) {
+    coordBtn.addEventListener('click', function () {
+      alert('My Coordinator\n\nName: Dr. Jane Smith\nEmail: j.smith@university.ca\nPhone: (416) 555-0101');
+    });
+  }
+  const empBtn = document.getElementById('viewEmployerBtn');
+  if (empBtn) {
+    empBtn.addEventListener('click', function () {
+      alert('My Current Employer\n\nCompany: Tech Corp Inc.\nSupervisor: Alex Johnson\nEmail: a.johnson@techcorp.com');
+    });
+  }
+
+  // Coordinator announcement button
+  const announcementBtn = document.getElementById('announcementBtn');
+  if (announcementBtn) {
+    announcementBtn.addEventListener('click', function () {
+      const msg = prompt('Send Announcement to All Students:\n\nEnter your message:');
+      if (msg && msg.trim()) {
+        alert(`Announcement sent successfully!\n\n"${msg.trim()}"`);
+      }
+    });
+  }
+});
