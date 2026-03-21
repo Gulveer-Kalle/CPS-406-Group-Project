@@ -11,28 +11,33 @@
 <body>
   <div class="subscreen-container">
     <div class="content-header">
-      <h1>Coordinator Info</h1>
-      <p class="content-subtitle">Manage your coordinator account</p>
+      <h1>Coordinator Profile</h1>
+      <p class="content-subtitle">Manage your coordinator account, contact details, and program information.</p>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="stats-grid">
+    <div class="stats-grid profile-stats-grid">
       <div class="stat-card">
-        <div class="stat-icon">👥</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Students Supervised</span>
           <span class="stat-value">150</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">📧</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 8.1 5.4a1.5 1.5 0 0 0 1.8 0L21 7"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Email Verified</span>
           <span class="stat-value">Yes</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🏢</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Employers Managed</span>
           <span class="stat-value">48</span>
@@ -40,76 +45,117 @@
       </div>
     </div>
 
-    <div class="dashboard-grid">
-      <!-- Coordinator Profile Form -->
+    <div class="dashboard-grid profile-dashboard-grid">
       <div class="content-column">
-        <div class="column-card">
-          <h2 class="column-title">Coordinator Details</h2>
-          
-          <div class="form-group">
-            <label>Program Managed</label>
-            <input type="text" value="Computer Science Co-op">
+        <div class="column-card profile-panel">
+          <div class="profile-identity">
+            <div class="profile-avatar">DS</div>
+            <div class="profile-identity-copy">
+              <h2>Dr. Smith</h2>
+              <p>Coordinator, Computer Science Co-op</p>
+              <div class="profile-chip-row">
+                <span class="profile-chip">Coordinator</span>
+                <span class="profile-chip subtle">Active Account</span>
+              </div>
+            </div>
           </div>
-          
-          <div class="form-group">
-            <label>Total Students Supervised</label>
-            <input type="number" value="150" readonly>
+
+          <div class="profile-section-header">
+            <h3>Account Details</h3>
+            <p>Update your primary information shown across the co-op platform.</p>
           </div>
-          
-          <div class="form-group">
-            <label>Contact Email</label>
-            <input type="email" value="coordinator@tmu.ca">
+
+          <div class="profile-form-grid">
+            <div class="form-group">
+              <label for="coordinatorFullName">Full Name</label>
+              <input type="text" id="coordinatorFullName" value="Dr. Smith">
+            </div>
+            <div class="form-group">
+              <label for="coordinatorPrimaryEmail">Primary Email</label>
+              <input type="email" id="coordinatorPrimaryEmail" value="coord@example.com">
+            </div>
+            <div class="form-group">
+              <label for="coordinatorContactEmail">Contact Email</label>
+              <input type="email" id="coordinatorContactEmail" value="coordinator@tmu.ca">
+            </div>
+            <div class="form-group">
+              <label for="coordinatorProgram">Program Managed</label>
+              <input type="text" id="coordinatorProgram" value="Computer Science Co-op">
+            </div>
+            <div class="form-group">
+              <label for="coordinatorOffice">Office Location</label>
+              <input type="text" id="coordinatorOffice" value="George Vari Engineering, Room 317">
+            </div>
+            <div class="form-group">
+              <label for="coordinatorStudents">Students Supervised</label>
+              <input type="number" id="coordinatorStudents" value="150" readonly>
+            </div>
           </div>
-          
-          <!-- Common fields -->
-          <div class="form-group">
-            <label for="email">Primary Email</label>
-            <input type="email" id="email" value="coord@example.com">
+
+          <div class="profile-save-row">
+            <button id="saveProfile" class="btn-primary" type="button">Save Changes</button>
           </div>
-          
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" value="Dr. Smith">
-          </div>
-          
-          <button id="saveProfile" class="btn-primary full-width">Save Changes</button>
         </div>
       </div>
 
-      <!-- Recent Activity -->
       <div class="content-column">
-        <div class="column-card">
-          <h2 class="column-title">Recent Activity</h2>
-          <div class="terms-list">
-            <div class="term-item">
-              <div class="term-info">
-                <span class="term-season">Student approved</span>
-                <span class="term-employer">2 hours ago</span>
+        <div class="profile-side-stack">
+          <div class="column-card profile-panel">
+            <div class="profile-section-header compact">
+              <h3>Account Summary</h3>
+              <p>Quick reference details for your coordinator account.</p>
+            </div>
+            <div class="profile-summary-list">
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Coordinator ID</span>
+                <span class="profile-summary-value">COORD-014</span>
+              </div>
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Department</span>
+                <span class="profile-summary-value">Faculty of Science</span>
+              </div>
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Availability</span>
+                <span class="profile-summary-value">Weekdays, 9 AM to 5 PM</span>
               </div>
             </div>
-            <div class="term-item">
-              <div class="term-info">
-                <span class="term-season">Report reviewed</span>
-                <span class="term-employer">Mar 10, 2024</span>
+          </div>
+
+          <div class="column-card profile-panel">
+            <div class="profile-section-header compact">
+              <h3>Recent Activity</h3>
+              <p>Latest actions taken on your coordinator account.</p>
+            </div>
+            <div class="profile-activity-list">
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">Student approved</span>
+                <span class="profile-activity-meta">2 hours ago</span>
+              </div>
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">Evaluation request sent</span>
+                <span class="profile-activity-meta">Today, 10:24 AM</span>
+              </div>
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">Work-term report reviewed</span>
+                <span class="profile-activity-meta">Mar 10, 2024</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <script src="../../assets/js/firebase.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const saveBtn = document.getElementById('saveProfile');
-        if (saveBtn) {
-          saveBtn.addEventListener('click', function() {
-            alert('Coordinator profile updated!');
-          });
-        }
-      });
-    </script>
   </div>
+
+  <script src="../../assets/js/firebase.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const saveBtn = document.getElementById('saveProfile');
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function() {
+          alert('Coordinator profile updated!');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-

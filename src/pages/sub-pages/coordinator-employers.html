@@ -6,103 +6,48 @@
   <title>Employers - Co-op Connect</title>
   <link rel="stylesheet" href="../../assets/css/global.css">
   <link rel="stylesheet" href="../../assets/css/dashboard.css">
-  <link rel="stylesheet" href="../../assets/css/forms.css">
 </head>
 <body>
   <div class="subscreen-container">
     <div class="content-header">
       <h1>Employers</h1>
-      <p class="content-subtitle">Manage employer partners</p>
+      <p class="content-subtitle">See which students are assigned to each employer.</p>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="stats-grid">
+    <div class="stats-grid coordinator-report-stats">
       <div class="stat-card">
-        <div class="stat-icon">🏢</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Active Employers</span>
-          <span class="stat-value">48</span>
+          <span class="stat-value" id="coordinatorEmployerCount">0</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">📈</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <div class="stat-content">
-          <span class="stat-title">New Partners</span>
-          <span class="stat-value">3</span>
+          <span class="stat-title">Assigned Students</span>
+          <span class="stat-value" id="coordinatorEmployerAssignedStudentCount">0</span>
         </div>
       </div>
     </div>
 
-    <!-- Filter/Search Bar -->
-    <div class="content-column full-width">
-      <div class="filter-bar">
-        <div class="form-group">
-          <label for="employerSearch">Search Employers</label>
-          <input type="text" id="employerSearch" placeholder="Company name, industry...">
-        </div>
-        <div class="form-group">
-          <label for="industryFilter">Industry</label>
-          <select id="industryFilter">
-            <option>All</option>
-            <option>Technology</option>
-            <option>Finance</option>
-            <option>Healthcare</option>
-          </select>
-        </div>
-        <button class="btn-primary">Invite New Employer</button>
+    <div class="coordinator-applications-filter">
+      <div class="form-group">
+        <label for="coordinatorEmployerSearch">Search Employers</label>
+        <input type="text" id="coordinatorEmployerSearch" placeholder="Search by employer or student name">
       </div>
     </div>
 
-    <!-- Employers Table -->
-    <div class="content-column full-width">
-      <div class="column-card">
-        <h2 class="column-title">Employer Partners</h2>
-        <div class="terms-list">
-          <div class="term-item">
-            <div class="term-info">
-              <span class="term-season">Tech Corp Inc.</span>
-              <span class="term-employer">Technology</span>
-              <span class="term-grade">12 students placed</span>
-            </div>
-            <div class="term-status">
-              <span class="status-badge active">Verified Partner</span>
-              <div class="action-buttons">
-                <button class="quick-view-btn small">Profile</button>
-                <button class="btn-small">Postings</button>
-              </div>
-            </div>
-          </div>
-          <div class="term-item">
-            <div class="term-info">
-              <span class="term-season">Innovation Labs</span>
-              <span class="term-employer">AI/ML</span>
-              <span class="term-grade">5 students placed</span>
-            </div>
-            <div class="term-status">
-              <span class="status-badge pending">Pending Verification</span>
-              <button class="btn-small">Verify</button>
-            </div>
-          </div>
-        </div>
-        <div class="pagination">
-          <button>&laquo; Previous</button>
-          <span>Page 1 of 6</span>
-          <button>Next &raquo;</button>
-        </div>
+    <div class="column-card">
+      <h2 class="column-title">Employer Partners</h2>
+      <div class="applications-list" id="coordinatorEmployerList">
+        <div class="applications-empty-state">Loading employers...</div>
       </div>
     </div>
-
-    <script src="../../assets/js/firebase.js"></script>
-    <script src="../../assets/js/role-manager.js"></script>
-    <script src="../../assets/js/navigation.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const container = document.querySelector('.subscreen-container');
-        if (window.initRoleUI) window.initRoleUI(container);
-      });
-    </script>
   </div>
 </body>
 </html>
-
-

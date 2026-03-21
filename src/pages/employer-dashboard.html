@@ -61,8 +61,8 @@
     <main class="main-content">
       <section class="content-section active" id="dashboard-section">
         <div class="content-header">
-          <h1>Welcome, Employer!</h1>
-          <p class="content-subtitle">Manage your co-op students and evaluations</p>
+          <h1 id="employerDashboardHeading">Welcome, Employer!</h1>
+          <p class="content-subtitle" id="employerDashboardSubtitle">Manage your co-op students and evaluations</p>
         </div>
 
         <div class="stats-grid">
@@ -72,7 +72,7 @@
             </div>
             <div class="stat-content">
               <span class="stat-title">Total Employees</span>
-              <span class="stat-value">3</span>
+              <span class="stat-value" id="employerDashboardEmployeeCount">0</span>
             </div>
           </div>
           <div class="stat-card">
@@ -81,7 +81,7 @@
             </div>
             <div class="stat-content">
               <span class="stat-title">Reports Received</span>
-              <span class="stat-value">5</span>
+              <span class="stat-value" id="employerDashboardReportsReceivedCount">0</span>
             </div>
           </div>
           <div class="stat-card">
@@ -90,7 +90,7 @@
             </div>
             <div class="stat-content">
               <span class="stat-title">Evaluations Submitted</span>
-              <span class="stat-value">4</span>
+              <span class="stat-value" id="employerDashboardEvaluationsSubmittedCount">0</span>
             </div>
           </div>
           <div class="stat-card">
@@ -99,7 +99,7 @@
             </div>
             <div class="stat-content">
               <span class="stat-title">Pending Reviews</span>
-              <span class="stat-value">2</span>
+              <span class="stat-value" id="employerDashboardPendingReviewsCount">0</span>
             </div>
           </div>
         </div>
@@ -108,50 +108,8 @@
           <div class="content-column">
             <div class="column-card">
               <h2 class="column-title">Recent Activity</h2>
-              <div class="terms-list">
-                <div class="term-item">
-                  <div class="term-info">
-                    <span class="term-season">Report Received</span>
-                    <span class="term-employer">John Smith submitted work-term report</span>
-                    <span class="term-grade">2 hours ago</span>
-                  </div>
-                  <div class="term-status">
-                    <span class="status-badge pending">Pending Review</span>
-                    <button class="quick-view-btn">View</button>
-                  </div>
-                </div>
-                <div class="term-item">
-                  <div class="term-info">
-                    <span class="term-season">Evaluation Submitted</span>
-                    <span class="term-employer">Sarah Johnson — Mid-term evaluation</span>
-                    <span class="term-grade">5 hours ago</span>
-                  </div>
-                  <div class="term-status">
-                    <span class="status-badge completed">Submitted</span>
-                    <button class="quick-view-btn">View</button>
-                  </div>
-                </div>
-                <div class="term-item">
-                  <div class="term-info">
-                    <span class="term-season">New Employee</span>
-                    <span class="term-employer">Mike Davis started Winter 2024 term</span>
-                    <span class="term-grade">1 day ago</span>
-                  </div>
-                  <div class="term-status">
-                    <span class="status-badge completed">Active</span>
-                  </div>
-                </div>
-                <div class="term-item">
-                  <div class="term-info">
-                    <span class="term-season">Report Received</span>
-                    <span class="term-employer">Emily Chen submitted work-term report</span>
-                    <span class="term-grade">2 days ago</span>
-                  </div>
-                  <div class="term-status">
-                    <span class="status-badge completed">Reviewed</span>
-                    <button class="quick-view-btn">View</button>
-                  </div>
-                </div>
+              <div class="terms-list" id="employerDashboardRecentActivityList">
+                <div class="applications-empty-state">Loading recent activity...</div>
               </div>
             </div>
           </div>
@@ -199,6 +157,9 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   <script src="../assets/js/firebase.js"></script>
   <script src="../assets/js/navigation.js"></script>
+  <script src="../assets/js/employer-employees.js"></script>
+  <script src="../assets/js/employer-work-term-reports.js"></script>
+  <script src="../assets/js/employer-evaluation-reports.js"></script>
   <script src="../assets/js/partner.js"></script>
 </body>
 </html>

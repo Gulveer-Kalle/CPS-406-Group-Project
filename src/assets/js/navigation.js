@@ -2,11 +2,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 console.log('Navigation loaded');
+
+  const isSubPageDocument = window.location.pathname.includes('/sub-pages/');
+  const loginPath = isSubPageDocument ? '../login.html' : '../pages/login.html';
   
   // Validate userRole on dashboard load
   if (!localStorage.getItem('userRole')) {
     console.warn('No userRole found, redirecting to login');
-    window.location.href = '../pages/login.html';
+    window.location.href = loginPath;
     return;
   }
   
@@ -16,6 +19,19 @@ console.log('Navigation loaded');
   // Initialize logout if logout button exists
   initializeLogout();
 });
+
+window.openDashboardSubscreen = function(url) {
+  const dashboardSection = document.getElementById('dashboard-section');
+  const subscreenContainer = document.getElementById('subscreen-container');
+
+  if (!subscreenContainer || !url) return;
+
+  loadSubscreen(url, subscreenContainer);
+
+  if (dashboardSection) {
+    dashboardSection.classList.remove('active');
+  }
+};
 
 // Navigation functionality - supports both local sections and external subscreens
 function initializeNavigation() {
@@ -67,7 +83,9 @@ async function loadSubscreen(url, container) {
   try {
     const role = localStorage.getItem('userRole') || 'student';
     const prefixedUrl = `${role}-${url}.html`;
-    const fullUrl = `../pages/sub-pages/${prefixedUrl}`;
+    const isSubPageDocument = window.location.pathname.includes('/sub-pages/');
+    const subPagesBase = isSubPageDocument ? './' : '../pages/sub-pages/';
+    const fullUrl = `${subPagesBase}${prefixedUrl}`;
     console.log('Loading subscreen - Role:', role, 'URL:', fullUrl);
     const response = await fetch(fullUrl);
 
@@ -81,6 +99,43 @@ async function loadSubscreen(url, container) {
     setTimeout(() => {
       initializeQuickViewButtons();
       initializeActionButtons();
+      initializeNavButtons();
+      if (window.initializeStudentApplicationPages) {
+        window.initializeStudentApplicationPages();
+      }
+      if (window.initializeStudentWorkTermReportPages) {
+        window.initializeStudentWorkTermReportPages();
+      }
+      if (window.initializeStudentCoordinatorContactPage) {
+        window.initializeStudentCoordinatorContactPage();
+      }
+      if (window.initializeCoordinatorApplicationPages) {
+        window.initializeCoordinatorApplicationPages();
+      }
+      if (window.initializeCoordinatorStudentsPage) {
+        window.initializeCoordinatorStudentsPage();
+      }
+      if (window.initializeCoordinatorEmployersPage) {
+        window.initializeCoordinatorEmployersPage();
+      }
+      if (window.initializeCoordinatorWorkTermReportPages) {
+        window.initializeCoordinatorWorkTermReportPages();
+      }
+      if (window.initializeCoordinatorEvaluationReportPages) {
+        window.initializeCoordinatorEvaluationReportPages();
+      }
+      if (window.initializeCoordinatorAnnouncementComposePage) {
+        window.initializeCoordinatorAnnouncementComposePage();
+      }
+      if (window.initializeEmployerEmployeesPage) {
+        window.initializeEmployerEmployeesPage();
+      }
+      if (window.initializeEmployerWorkTermReportPages) {
+        window.initializeEmployerWorkTermReportPages();
+      }
+      if (window.initializeEmployerEvaluationReportPages) {
+        window.initializeEmployerEvaluationReportPages();
+      }
     }, 200);
     
   } catch (error) {
@@ -100,8 +155,10 @@ function initializeLogout() {
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function() {
+      const isSubPageDocument = window.location.pathname.includes('/sub-pages/');
+      const loginPath = isSubPageDocument ? '../login.html' : '../pages/login.html';
       firebase.auth().signOut().then(() => {
-        window.location.href = '../pages/login.html';
+        window.location.href = loginPath;
       }).catch((error) => {
         console.error('Logout error:', error);
         alert('Error logging out. Please try again.');
@@ -114,6 +171,11 @@ function initializeLogout() {
 function initializeQuickViewButtons() {
   const quickViewBtns = document.querySelectorAll('.quick-view-btn');
   quickViewBtns.forEach(btn => {
+    if (btn.dataset.quickViewBound === 'true') return;
+    if (!btn.closest('.term-item')) return;
+    if (btn.tagName === 'A' || btn.hasAttribute('href') || btn.hasAttribute('data-file-trigger')) return;
+
+    btn.dataset.quickViewBound = 'true';
     btn.addEventListener('click', function() {
       const termItem = this.closest('.term-item');
       const season = termItem.querySelector('.term-season')?.textContent || '';
@@ -129,6 +191,10 @@ function initializeQuickViewButtons() {
 function initializeActionButtons(actionsConfig = {}) {
   const actionBtns = document.querySelectorAll('.action-btn');
   actionBtns.forEach(btn => {
+    if (btn.hasAttribute('data-nav')) {
+      return;
+    }
+
     btn.addEventListener('click', function() {
       const actionText = this.querySelector('.action-text')?.textContent;
       if (!actionText) return;
@@ -172,24 +238,15 @@ function initializeNavButtons() {
 document.addEventListener('DOMContentLoaded', function () {
   initializeNavButtons();
 
-  // Student dashboard: coordinator / employer header buttons
-  const coordBtn = document.getElementById('viewCoordinatorBtn');
-  if (coordBtn) {
-    coordBtn.addEventListener('click', function () {
-      alert('My Coordinator\n\nName: Dr. Jane Smith\nEmail: j.smith@university.ca\nPhone: (416) 555-0101');
-    });
-  }
-  const empBtn = document.getElementById('viewEmployerBtn');
-  if (empBtn) {
-    empBtn.addEventListener('click', function () {
-      alert('My Current Employer\n\nCompany: Tech Corp Inc.\nSupervisor: Alex Johnson\nEmail: a.johnson@techcorp.com');
-    });
-  }
-
   // Coordinator announcement button
   const announcementBtn = document.getElementById('announcementBtn');
   if (announcementBtn) {
     announcementBtn.addEventListener('click', function () {
+      if (window.handleCoordinatorAnnouncement) {
+        window.handleCoordinatorAnnouncement();
+        return;
+      }
+
       const msg = prompt('Send Announcement to All Students:\n\nEnter your message:');
       if (msg && msg.trim()) {
         alert(`Announcement sent successfully!\n\n"${msg.trim()}"`);

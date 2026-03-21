@@ -78,6 +78,7 @@
               <input type="password" id="confirmPassword" placeholder="••••••••" required>
               <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)">Show</button>
             </div>
+            <p id="passwordMatchError" class="field-error-message" hidden>Password does not match.</p>
           </div>
 
           <button type="submit" class="register-btn" id="submitBtn">Create Account</button>
@@ -103,6 +104,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
   
   <script src="../assets/js/firebase.js"></script>
+  <script src="../assets/js/student-assignment.js"></script>
   <script src="../assets/js/register.js"></script>
 </body>
 </html>

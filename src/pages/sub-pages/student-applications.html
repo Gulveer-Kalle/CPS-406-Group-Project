@@ -3,11 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Applications - Co-op Connect</title>
+  <title>Application - Co-op Connect</title>
   <link rel="stylesheet" href="../../assets/css/global.css">
   <link rel="stylesheet" href="../../assets/css/dashboard.css">
 </head>
 <body>
-  <div class="subscreen-container"></div>
+  <div class="subscreen-container">
+    <div class="content-header">
+      <h1>Application</h1>
+      <p class="content-subtitle">apply for co-op program</p>
+    </div>
+
+    <div class="column-card">
+      <h2 class="column-title">Application Status</h2>
+      <div class="terms-list">
+        <div class="term-item" id="studentApplicationStatusCard">
+          <div class="term-info">
+            <span class="term-season" id="studentApplicationTitle">Apply</span>
+            <span class="term-employer" id="studentApplicationDescription">New student users can start their co-op application here.</span>
+            <span class="term-grade" id="studentApplicationNote">Start your first application</span>
+          </div>
+          <div class="term-status">
+            <span class="status-badge pending" id="studentApplicationBadge">New Student</span>
+            <button
+              class="btn-primary"
+              id="studentApplicationAction"
+              type="button"
+              onclick="window.openDashboardSubscreen && window.openDashboardSubscreen('application-upload')">
+              Start Application
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../assets/js/firebase.js"></script>
+    <script src="../../assets/js/navigation.js"></script>
+  </div>
 </body>
 </html>

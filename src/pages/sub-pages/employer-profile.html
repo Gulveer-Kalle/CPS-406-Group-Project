@@ -12,27 +12,32 @@
   <div class="subscreen-container">
     <div class="content-header">
       <h1>Company Profile</h1>
-      <p class="content-subtitle">Manage your employer account information</p>
+      <p class="content-subtitle">Manage your company information, contact details, and hiring profile.</p>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="stats-grid">
+    <div class="stats-grid profile-stats-grid">
       <div class="stat-card">
-        <div class="stat-icon">🏢</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Account Status</span>
           <span class="stat-value">Active</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">📧</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 8.1 5.4a1.5 1.5 0 0 0 1.8 0L21 7"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Email Verified</span>
           <span class="stat-value">Yes</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">📋</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M4 15h16"/><path d="M6 11h12"/><path d="M8 7h8"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Open Positions</span>
           <span class="stat-value">5</span>
@@ -40,78 +45,122 @@
       </div>
     </div>
 
-    <div class="dashboard-grid">
-      <!-- Employer Profile Form -->
+    <div class="dashboard-grid profile-dashboard-grid">
       <div class="content-column">
-        <div class="column-card">
-          <h2 class="column-title">Company Details</h2>
-          
-          <div class="form-group">
-            <label>Company Name</label>
-            <input type="text" value="Tech Corp Inc.">
+        <div class="column-card profile-panel">
+          <div class="profile-identity">
+            <div class="profile-avatar company">TC</div>
+            <div class="profile-identity-copy">
+              <h2>Tech Corp Inc.</h2>
+              <p>Technology employer partner</p>
+              <div class="profile-chip-row">
+                <span class="profile-chip">Employer</span>
+                <span class="profile-chip subtle">Hiring Partner</span>
+              </div>
+            </div>
           </div>
-          
-          <div class="form-group">
-            <label>Industry</label>
-            <select>
-              <option selected>Technology</option>
-            </select>
+
+          <div class="profile-section-header">
+            <h3>Company Details</h3>
+            <p>Keep your public company profile and recruiter details current.</p>
           </div>
-          
-          <div class="form-group">
-            <label>Open Positions</label>
-            <input type="number" value="5">
+
+          <div class="profile-form-grid">
+            <div class="form-group">
+              <label for="employerCompanyName">Company Name</label>
+              <input type="text" id="employerCompanyName" value="Tech Corp Inc.">
+            </div>
+            <div class="form-group">
+              <label for="employerContactName">Contact Name</label>
+              <input type="text" id="employerContactName" value="Jane Smith">
+            </div>
+            <div class="form-group">
+              <label for="employerEmail">Email</label>
+              <input type="email" id="employerEmail" value="employer@example.com">
+            </div>
+            <div class="form-group">
+              <label for="employerIndustry">Industry</label>
+              <select id="employerIndustry">
+                <option selected>Technology</option>
+                <option>Finance</option>
+                <option>Healthcare</option>
+                <option>Education</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="employerWebsite">Company Website</label>
+              <input type="text" id="employerWebsite" value="www.techcorp.ca">
+            </div>
+            <div class="form-group">
+              <label for="employerOpenPositions">Open Positions</label>
+              <input type="number" id="employerOpenPositions" value="5">
+            </div>
           </div>
-          
-          <!-- Common fields -->
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" value="employer@example.com">
+
+          <div class="profile-save-row">
+            <button id="saveProfile" class="btn-primary" type="button">Save Changes</button>
           </div>
-          
-          <div class="form-group">
-            <label for="name">Contact Name</label>
-            <input type="text" id="name" value="Jane Smith">
-          </div>
-          
-          <button id="saveProfile" class="btn-primary full-width">Save Changes</button>
         </div>
       </div>
 
-      <!-- Recent Activity -->
       <div class="content-column">
-        <div class="column-card">
-          <h2 class="column-title">Recent Activity</h2>
-          <div class="terms-list">
-            <div class="term-item">
-              <div class="term-info">
-                <span class="term-season">New applicant</span>
-                <span class="term-employer">2 hours ago</span>
+        <div class="profile-side-stack">
+          <div class="column-card profile-panel">
+            <div class="profile-section-header compact">
+              <h3>Company Summary</h3>
+              <p>Reference details visible to coordinators and students.</p>
+            </div>
+            <div class="profile-summary-list">
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Partner Since</span>
+                <span class="profile-summary-value">2022</span>
+              </div>
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Head Office</span>
+                <span class="profile-summary-value">Toronto, Ontario</span>
+              </div>
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Student Placements</span>
+                <span class="profile-summary-value">18 completed terms</span>
               </div>
             </div>
-            <div class="term-item">
-              <div class="term-info">
-                <span class="term-season">Report submitted</span>
-                <span class="term-employer">Mar 10, 2024</span>
+          </div>
+
+          <div class="column-card profile-panel">
+            <div class="profile-section-header compact">
+              <h3>Recent Activity</h3>
+              <p>Latest actions taken in your employer dashboard.</p>
+            </div>
+            <div class="profile-activity-list">
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">Evaluation submitted</span>
+                <span class="profile-activity-meta">Today, 9:45 AM</span>
+              </div>
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">Work-term report reviewed</span>
+                <span class="profile-activity-meta">Yesterday</span>
+              </div>
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">New student assigned</span>
+                <span class="profile-activity-meta">Mar 10, 2024</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <script src="../../assets/js/firebase.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const saveBtn = document.getElementById('saveProfile');
-        if (saveBtn) {
-          saveBtn.addEventListener('click', function() {
-            alert('Employer profile updated!');
-          });
-        }
-      });
-    </script>
   </div>
+
+  <script src="../../assets/js/firebase.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const saveBtn = document.getElementById('saveProfile');
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function() {
+          alert('Employer profile updated!');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-

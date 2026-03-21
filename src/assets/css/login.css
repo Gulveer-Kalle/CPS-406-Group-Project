@@ -18,6 +18,7 @@ body {
 /* Left Side - Logo and Branding */
 .login-left {
   flex: 1;
+  position: relative;
   background: #efefef;
   padding: 60px 40px;
   display: flex;
@@ -29,6 +30,16 @@ body {
 
 .logo-section {
   margin-bottom: 40px;
+}
+
+.login-version-label {
+  position: absolute;
+  left: 24px;
+  bottom: 18px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+  letter-spacing: 0.02em;
 }
 
 .logo {
@@ -149,6 +160,13 @@ body {
   color: #0f2a7d;
 }
 
+.login-error-message {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
 /* Buttons */
 .login-btn {
   width: 100%;
@@ -172,6 +190,13 @@ body {
 
 .login-btn:active {
   transform: translateY(0);
+}
+
+.login-btn:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* Success Message */
@@ -236,6 +261,11 @@ body {
     padding: 40px 30px;
   }
 
+  .login-version-label {
+    left: 18px;
+    bottom: 14px;
+  }
+
   .login-right {
     padding: 40px 30px;
   }
@@ -261,6 +291,12 @@ body {
 @media (max-width: 480px) {
   .login-left {
     padding: 30px 20px;
+  }
+
+  .login-version-label {
+    left: 14px;
+    bottom: 12px;
+    font-size: 10px;
   }
 
   .login-right {

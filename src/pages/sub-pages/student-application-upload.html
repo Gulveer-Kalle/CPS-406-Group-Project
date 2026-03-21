@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Application Upload - Co-op Connect</title>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+</head>
+<body>
+  <div class="subscreen-container">
+    <div class="content-header">
+      <h1>Application Upload</h1>
+      <p class="content-subtitle">Upload both required documents to submit your co-op application.</p>
+    </div>
+
+    <div class="column-card">
+      <h2 class="column-title">Required Documents</h2>
+
+      <div class="upload-panel">
+        <div class="upload-panel-copy">
+          <span class="term-season">Upload Resume</span>
+          <span class="term-employer">Only PDF and DOC files are accepted. Maximum size: 1 MB.</span>
+          <span class="term-grade" id="resumeFileStatus">No file selected</span>
+        </div>
+        <div class="upload-panel-actions">
+          <input
+            class="hidden-file-input"
+            type="file"
+            id="resumeInput"
+            accept=".pdf,.doc,application/pdf,application/msword">
+          <button class="quick-view-btn" type="button" data-file-trigger="resumeInput">Upload Resume</button>
+        </div>
+      </div>
+
+      <div class="upload-panel">
+        <div class="upload-panel-copy">
+          <span class="term-season">Upload Cover Letter</span>
+          <span class="term-employer">Only PDF and DOC files are accepted. Maximum size: 1 MB.</span>
+          <span class="term-grade" id="coverLetterFileStatus">No file selected</span>
+        </div>
+        <div class="upload-panel-actions">
+          <input
+            class="hidden-file-input"
+            type="file"
+            id="coverLetterInput"
+            accept=".pdf,.doc,application/pdf,application/msword">
+          <button class="quick-view-btn" type="button" data-file-trigger="coverLetterInput">Upload Cover Letter</button>
+        </div>
+      </div>
+
+      <p class="upload-error-message" id="applicationUploadError" hidden></p>
+
+      <div class="upload-submit-row">
+        <button class="btn-primary" id="submitApplicationBtn" type="button" disabled>Submit Application</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

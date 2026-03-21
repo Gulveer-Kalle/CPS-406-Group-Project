@@ -117,7 +117,26 @@ document.addEventListener('DOMContentLoaded', function () {
   const passwordInput = document.getElementById('password');
   const confirmPasswordInput = document.getElementById('confirmPassword');
   const passwordFeedback = document.getElementById('passwordFeedback');
+  const passwordMatchError = document.getElementById('passwordMatchError');
   let hasOpenedPasswordFeedback = false;
+
+  function showPasswordMatchError() {
+    if (!passwordMatchError || !confirmPasswordInput) {
+      return;
+    }
+
+    passwordMatchError.hidden = false;
+    confirmPasswordInput.focus();
+    confirmPasswordInput.select();
+  }
+
+  function clearPasswordMatchError() {
+    if (!passwordMatchError) {
+      return;
+    }
+
+    passwordMatchError.hidden = true;
+  }
 
   function runPasswordValidation() {
     const results = validatePassword(passwordInput ? passwordInput.value : '');
@@ -171,6 +190,10 @@ document.addEventListener('DOMContentLoaded', function () {
   [firstNameInput, lastNameInput, emailInput, passwordInput, confirmPasswordInput].forEach(input => {
     if (input) {
       input.addEventListener('input', function () {
+        if (input === passwordInput || input === confirmPasswordInput) {
+          clearPasswordMatchError();
+        }
+
         if (hasOpenedPasswordFeedback) {
           runPasswordValidation();
         }
@@ -189,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const password = passwordInput.value;
       const confirmPassword = confirmPasswordInput.value;
       const successMessage = document.getElementById('successMessage');
+      clearPasswordMatchError();
 
       // Validate inputs
       if (!firstName || !lastName || !email || !password || !confirmPassword) {
@@ -211,11 +235,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (password !== confirmPassword) {
-        alert('Passwords do not match.');
+        showPasswordMatchError();
         return;
       }
 
       try {
+        const studentAssignmentData = selectedRole === 'student' && window.createStudentAssignmentData
+          ? await window.createStudentAssignmentData()
+          : {};
 
         // Use global firebase.auth() and firebase.firestore()
         const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -227,6 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
           lastName: lastName,
           email: email,
           role: selectedRole,
+          ...studentAssignmentData,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
 

@@ -6,60 +6,77 @@
   <title>All Work Term Reports - Co-op Connect</title>
   <link rel="stylesheet" href="../../assets/css/global.css">
   <link rel="stylesheet" href="../../assets/css/dashboard.css">
-  <link rel="stylesheet" href="../../assets/css/forms.css">
 </head>
 <body>
   <div class="subscreen-container">
     <div class="content-header">
       <h1>All Work Term Reports</h1>
-      <p class="content-subtitle">Review all student submissions</p>
+      <p class="content-subtitle">Review all student submissions and prepare grades.</p>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="stats-grid">
+    <div class="stats-grid coordinator-report-stats">
       <div class="stat-card">
-        <div class="stat-icon">📋</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Submitted Reports</span>
-          <span class="stat-value">156</span>
+          <span class="stat-value" id="coordinatorReportSubmittedCount">0</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">⏳</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+        </div>
         <div class="stat-content">
-          <span class="stat-title">Pending Review</span>
-          <span class="stat-value">23</span>
+          <span class="stat-title">Not Submitted</span>
+          <span class="stat-value" id="coordinatorReportNotSubmittedCount">0</span>
         </div>
       </div>
     </div>
 
-    <div class="content-column full-width">
-      <div class="column-card">
-        <h2>All Reports</h2>
-        <div class="terms-list">
-          <div class="term-item">
-            <span>John Doe - Winter 2024 - Tech Corp - A</span>
-            <button class="btn-small">View</button>
+    <div class="dashboard-grid">
+      <div class="content-column">
+        <div class="column-card">
+          <h2 class="column-title">All Reports</h2>
+          <div class="coordinator-applications-filter">
+            <div class="form-group">
+              <label for="coordinatorWorkTermSearch">Search by Name</label>
+              <input type="text" id="coordinatorWorkTermSearch" placeholder="Search by student name">
+            </div>
+            <div class="form-group">
+              <label for="coordinatorWorkTermStatusFilter">Search by Status</label>
+              <select id="coordinatorWorkTermStatusFilter">
+                <option value="all">All</option>
+                <option value="submitted">Submitted</option>
+                <option value="not submitted">Not Submitted</option>
+              </select>
+            </div>
           </div>
-          <div class="term-item">
-            <span>Sarah Johnson - Winter 2024 - Innovation Labs - Pending</span>
-            <button class="btn-small">Assign Grade</button>
+          <div class="applications-list" id="coordinatorWorkTermReportList">
+            <div class="applications-empty-state">Loading student work term reports...</div>
           </div>
         </div>
-        <div class="grade-form">
-          <select id="gradeSelect">
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-          </select>
-          <button>Assign Grade</button>
+      </div>
+
+      <div class="content-column">
+        <div class="report-side-stack">
+          <div class="column-card">
+            <h2 class="column-title">Report Due Date</h2>
+            <div class="coordinator-due-date-display" id="coordinatorCurrentDueDate">No Due Date</div>
+            <div class="form-group coordinator-due-date-form-group">
+              <label for="coordinatorDueDateInput">Set Due Date</label>
+              <input type="text" id="coordinatorDueDateInput" placeholder="12 MAR 2026">
+            </div>
+            <p class="application-card-note">Use this format: DD MON YYYY, for example 12 MAR 2026. Leave blank to clear the due date.</p>
+            <p class="upload-error-message" id="coordinatorDueDateMessage" hidden></p>
+            <div class="upload-submit-row">
+              <button class="btn-primary" id="coordinatorDueDateUpdateBtn" type="button">Update</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <script src="../../assets/js/firebase.js"></script>
-    <script src="../../assets/js/navigation.js"></script>
   </div>
 </body>
 </html>
-

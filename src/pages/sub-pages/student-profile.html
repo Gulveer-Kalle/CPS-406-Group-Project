@@ -12,106 +12,154 @@
   <div class="subscreen-container">
     <div class="content-header">
       <h1>Student Profile</h1>
-      <p class="content-subtitle">Manage your co-op student information</p>
+      <p class="content-subtitle">Manage your student account, academic details, and co-op profile.</p>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="stats-grid">
+    <div class="stats-grid profile-stats-grid">
       <div class="stat-card">
-        <div class="stat-icon">👤</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Account Status</span>
           <span class="stat-value">Active</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">📧</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 8.1 5.4a1.5 1.5 0 0 0 1.8 0L21 7"/></svg>
+        </div>
         <div class="stat-content">
           <span class="stat-title">Email Verified</span>
           <span class="stat-value">Yes</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🔐</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+        </div>
         <div class="stat-content">
-          <span class="stat-title">2FA Enabled</span>
-          <span class="stat-value">No</span>
+          <span class="stat-title">Work Terms Completed</span>
+          <span class="stat-value">2</span>
         </div>
       </div>
     </div>
 
-    <div class="dashboard-grid">
-      <!-- Student Profile Form -->
+    <div class="dashboard-grid profile-dashboard-grid">
       <div class="content-column">
-        <div class="column-card">
-          <h2 class="column-title">Student Details</h2>
-          
-          <div class="form-group">
-            <label>Student ID</label>
-            <input type="text" value="TMU2023005" readonly>
+        <div class="column-card profile-panel">
+          <div class="profile-identity">
+            <div class="profile-avatar student">JD</div>
+            <div class="profile-identity-copy">
+              <h2>John Doe</h2>
+              <p>Computer Science student</p>
+              <div class="profile-chip-row">
+                <span class="profile-chip">Student</span>
+                <span class="profile-chip subtle">Co-op Candidate</span>
+              </div>
+            </div>
           </div>
-          
-          <div class="form-group">
-            <label>Program</label>
-            <select>
-              <option selected>Computer Science</option>
-            </select>
+
+          <div class="profile-section-header">
+            <h3>Student Details</h3>
+            <p>Keep your academic and contact information current for co-op matching.</p>
           </div>
-          
-          <div class="form-group">
-            <label>Work Terms Completed</label>
-            <input type="number" value="2" readonly>
+
+          <div class="profile-form-grid">
+            <div class="form-group">
+              <label for="studentFullName">Full Name</label>
+              <input type="text" id="studentFullName" value="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="studentEmail">Email</label>
+              <input type="email" id="studentEmail" value="student@example.com">
+            </div>
+            <div class="form-group">
+              <label for="studentId">Student ID</label>
+              <input type="text" id="studentId" value="TMU2023005" readonly>
+            </div>
+            <div class="form-group">
+              <label for="studentProgram">Program</label>
+              <select id="studentProgram">
+                <option selected>Computer Science</option>
+                <option>Business Technology Management</option>
+                <option>Information Technology Management</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="studentExpectedGrad">Expected Graduation</label>
+              <input type="text" id="studentExpectedGrad" value="Spring 2027">
+            </div>
+            <div class="form-group">
+              <label for="studentTermsCompleted">Work Terms Completed</label>
+              <input type="number" id="studentTermsCompleted" value="2" readonly>
+            </div>
           </div>
-          
-          <!-- Common fields -->
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" value="student@example.com">
+
+          <div class="profile-save-row">
+            <button id="saveProfile" class="btn-primary" type="button">Save Changes</button>
           </div>
-          
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" value="John Doe">
-          </div>
-          
-          <button id="saveProfile" class="btn-primary full-width">Save Changes</button>
         </div>
       </div>
 
-      <!-- Recent Activity -->
       <div class="content-column">
-        <div class="column-card">
-          <h2 class="column-title">Recent Activity</h2>
-          <div class="terms-list">
-            <div class="term-item">
-              <div class="term-info">
-                <span class="term-season">Profile viewed</span>
-                <span class="term-employer">2 hours ago</span>
+        <div class="profile-side-stack">
+          <div class="column-card profile-panel">
+            <div class="profile-section-header compact">
+              <h3>Profile Summary</h3>
+              <p>Snapshot of your current co-op readiness details.</p>
+            </div>
+            <div class="profile-summary-list">
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Current Standing</span>
+                <span class="profile-summary-value">Good academic standing</span>
+              </div>
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Assigned Coordinator</span>
+                <span class="profile-summary-value">Alex Ufkes</span>
+              </div>
+              <div class="profile-summary-item">
+                <span class="profile-summary-label">Assigned Employer</span>
+                <span class="profile-summary-value">Tech Corp Inc.</span>
               </div>
             </div>
-            <div class="term-item">
-              <div class="term-info">
-                <span class="term-season">Password changed</span>
-                <span class="term-employer">Mar 10, 2024</span>
+          </div>
+
+          <div class="column-card profile-panel">
+            <div class="profile-section-header compact">
+              <h3>Recent Activity</h3>
+              <p>Latest updates related to your student profile.</p>
+            </div>
+            <div class="profile-activity-list">
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">Application documents updated</span>
+                <span class="profile-activity-meta">Today, 8:15 AM</span>
+              </div>
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">Work-term report submitted</span>
+                <span class="profile-activity-meta">Yesterday</span>
+              </div>
+              <div class="profile-activity-item">
+                <span class="profile-activity-title">Profile viewed by coordinator</span>
+                <span class="profile-activity-meta">Mar 10, 2024</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <script src="../../assets/js/firebase.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const saveBtn = document.getElementById('saveProfile');
-        if (saveBtn) {
-          saveBtn.addEventListener('click', function() {
-            alert('Student profile updated!');
-          });
-        }
-      });
-    </script>
   </div>
+
+  <script src="../../assets/js/firebase.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const saveBtn = document.getElementById('saveProfile');
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function() {
+          alert('Student profile updated!');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-

@@ -205,6 +205,13 @@ body {
   display: none;
 }
 
+.field-error-message {
+  margin: 8px 0 0;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: 500;
+}
+
 .password-checklist .rule {
   display: flex;
   align-items: center;

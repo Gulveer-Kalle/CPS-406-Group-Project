@@ -6,105 +6,63 @@
   <title>Students - Co-op Connect</title>
   <link rel="stylesheet" href="../../assets/css/global.css">
   <link rel="stylesheet" href="../../assets/css/dashboard.css">
-  <link rel="stylesheet" href="../../assets/css/forms.css">
 </head>
 <body>
   <div class="subscreen-container">
     <div class="content-header">
       <h1>Students</h1>
-      <p class="content-subtitle">Manage students in your program</p>
+      <p class="content-subtitle">Students assigned to your coordinator account.</p>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="stats-grid">
+    <div class="stats-grid coordinator-report-stats">
       <div class="stat-card">
-        <div class="stat-icon">👨‍🎓</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <div class="stat-content">
-          <span class="stat-title">Total Students</span>
-          <span class="stat-value">150</span>
+          <span class="stat-title">Assigned Students</span>
+          <span class="stat-value" id="coordinatorAssignedStudentCount">0</span>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">⚠️</div>
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
         <div class="stat-content">
-          <span class="stat-title">Needs Attention</span>
-          <span class="stat-value">8</span>
+          <span class="stat-title">Students With Email</span>
+          <span class="stat-value" id="coordinatorAssignedStudentEmailCount">0</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="stat-content">
+          <span class="stat-title">Coordinators</span>
+          <div class="coordinator-load-list" id="coordinatorStudentLoadList">
+            <span class="applications-empty-state">Loading coordinators...</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Filter/Search Bar -->
     <div class="content-column full-width">
-      <div class="filter-bar">
+      <div class="filter-bar coordinator-applications-filter">
         <div class="form-group">
-          <label for="studentSearch">Search Students</label>
-          <input type="text" id="studentSearch" placeholder="Name, ID, email...">
+          <label for="coordinatorStudentSearch">Search Students</label>
+          <input type="text" id="coordinatorStudentSearch" placeholder="Search by name or email">
         </div>
-        <div class="form-group">
-          <label for="statusFilter">Status</label>
-          <select id="statusFilter">
-            <option>All</option>
-            <option>Active</option>
-            <option>Inactive</option>
-            <option>Graduated</option>
-          </select>
-        </div>
-        <button class="btn-primary">Add Student</button>
       </div>
     </div>
 
-    <!-- Students Table -->
     <div class="content-column full-width">
       <div class="column-card">
         <h2 class="column-title">Student List</h2>
-        <div class="terms-list">
-          <div class="term-item">
-            <div class="term-info">
-              <span class="term-season">John Doe</span>
-              <span class="term-employer">TMU2023005</span>
-              <span class="term-grade">john@example.com</span>
-            </div>
-            <div class="term-status">
-              <span class="status-badge active">Active - 2 terms</span>
-              <div class="action-buttons">
-                <button class="quick-view-btn small">Profile</button>
-                <button class="btn-small">Reports</button>
-              </div>
-            </div>
-          </div>
-          <div class="term-item">
-            <div class="term-info">
-              <span class="term-season">Sarah Johnson</span>
-              <span class="term-employer">TMU2023012</span>
-              <span class="term-grade">sarah@tmu.ca</span>
-            </div>
-            <div class="term-status">
-              <span class="status-badge warning">Incomplete Report</span>
-              <div class="action-buttons">
-                <button class="btn-small danger">Contact</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pagination">
-          <button>&laquo; Previous</button>
-          <span>Page 1 of 15</span>
-          <button>Next &raquo;</button>
+        <div class="applications-list" id="coordinatorAssignedStudentsList">
+          <div class="applications-empty-state">Loading assigned students...</div>
         </div>
       </div>
     </div>
-
-<script src="../../assets/js/firebase.js"></script>
-    <script src="../../assets/js/role-manager.js"></script>
-    <script src="../../assets/js/navigation.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const container = document.querySelector('.subscreen-container');
-        if (window.initRoleUI) window.initRoleUI(container);
-      });
-    </script>
   </div>
 </body>
 </html>
-
-

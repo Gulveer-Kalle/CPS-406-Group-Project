@@ -6,99 +6,68 @@
   <title>Applications - Co-op Connect</title>
   <link rel="stylesheet" href="../../assets/css/global.css">
   <link rel="stylesheet" href="../../assets/css/dashboard.css">
-  <link rel="stylesheet" href="../../assets/css/forms.css">
 </head>
 <body>
   <div class="subscreen-container">
     <div class="content-header">
       <h1>Applications</h1>
-      <p class="content-subtitle">Overview of all student applications</p>
+      <p class="content-subtitle">Review student application documents and update application decisions.</p>
     </div>
 
-    <!-- Stats Grid -->
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-icon">📋</div>
         <div class="stat-content">
-          <span class="stat-title">Total Applications</span>
-          <span class="stat-value">456</span>
+          <span class="stat-title">Total Students</span>
+          <span class="stat-value" id="coordinatorApplicationsTotal">0</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📤</div>
+        <div class="stat-content">
+          <span class="stat-title">Uploaded</span>
+          <span class="stat-value" id="coordinatorApplicationsUploaded">0</span>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">⏳</div>
         <div class="stat-content">
-          <span class="stat-title">Pending Review</span>
-          <span class="stat-value">34</span>
+          <span class="stat-title">Pending / In Process</span>
+          <span class="stat-value" id="coordinatorApplicationsOpen">0</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-content">
+          <span class="stat-title">Approved</span>
+          <span class="stat-value" id="coordinatorApplicationsApproved">0</span>
         </div>
       </div>
     </div>
 
-    <!-- Filter Bar -->
-    <div class="content-column full-width">
-      <div class="filter-bar">
+    <div class="column-card">
+      <h2 class="column-title">Student Applications</h2>
+      <div class="filter-bar coordinator-applications-filter">
         <div class="form-group">
-          <label for="termFilter">Term</label>
-          <select id="termFilter">
-            <option>All Terms</option>
-            <option>Winter 2024</option>
-            <option>Fall 2023</option>
+          <label for="coordinatorApplicationSearch">Search by Name</label>
+          <input type="text" id="coordinatorApplicationSearch" placeholder="Search student name">
+        </div>
+        <div class="form-group">
+          <label for="coordinatorApplicationStatusFilter">Filter by Status</label>
+          <select id="coordinatorApplicationStatusFilter">
+            <option value="all">All Statuses</option>
+            <option value="not_submitted">Not Submitted</option>
+            <option value="pending">Pending</option>
+            <option value="in_process">In Process</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="statusFilter">Status</label>
-          <select id="statusFilter">
-            <option>All</option>
-            <option>Pending Review</option>
-            <option>Approved</option>
-            <option>Rejected</option>
-          </select>
-        </div>
-        <button class="btn-primary">Export Data</button>
+      </div>
+      <div class="applications-list" id="coordinatorApplicationsList">
+        <div class="applications-empty-state">Loading student applications...</div>
       </div>
     </div>
-
-    <!-- Applications Dashboard -->
-    <div class="dashboard-grid">
-      <div class="content-column">
-        <div class="column-card">
-          <h2 class="column-title">By Status</h2>
-          <div class="stats-grid status-grid">
-            <div class="stat-card">
-              <span class="stat-value">123</span>
-              <span class="stat-title">Pending</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">289</span>
-              <span class="stat-title">Approved</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">44</span>
-              <span class="stat-title">Rejected</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="content-column">
-        <div class="column-card">
-          <h2 class="column-title">Recent Applications</h2>
-          <div class="terms-list">
-            <div class="term-item">
-              <span>John Doe → Tech Corp (Winter 2024)</span>
-              <span>Applied 2h ago - Pending</span>
-            </div>
-            <div class="term-item">
-              <span>Sarah J → Innovation Labs (Winter 2024)</span>
-              <span>Applied 1d ago - Approved</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script src="../../assets/js/firebase.js"></script>
-    <script src="../../assets/js/navigation.js"></script>
   </div>
 </body>
 </html>
-

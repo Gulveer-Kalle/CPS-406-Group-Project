@@ -86,7 +86,7 @@
             </div>
             <div class="stat-content">
               <span class="stat-title">Current Work Term</span>
-              <span class="stat-value">Winter 2024</span>
+              <span class="stat-value" id="studentDashboardCurrentWorkTerm">-</span>
             </div>
           </div>
           <div class="stat-card">
@@ -95,7 +95,7 @@
             </div>
             <div class="stat-content">
               <span class="stat-title">Work Terms Remaining</span>
-              <span class="stat-value">2</span>
+              <span class="stat-value" id="studentDashboardWorkTermsRemaining">-</span>
             </div>
           </div>
           <div class="stat-card">
@@ -104,7 +104,7 @@
             </div>
             <div class="stat-content">
               <span class="stat-title">Reports Submitted</span>
-              <span class="stat-value">3</span>
+              <span class="stat-value" id="studentDashboardReportCount">0</span>
             </div>
           </div>
           <div class="stat-card">
@@ -113,7 +113,7 @@
             </div>
             <div class="stat-content">
               <span class="stat-title">Grade Received</span>
-              <span class="stat-value">A</span>
+              <span class="stat-value" id="studentDashboardGradeValue">-</span>
             </div>
           </div>
         </div>
@@ -122,89 +122,55 @@
           <div class="content-column">
             <div class="column-card">
               <h2 class="column-title">Recent Work Terms</h2>
-              <div class="terms-list">
-                <div class="term-item">
-                  <div class="term-info">
-                    <span class="term-season">Fall 2023</span>
-                    <span class="term-employer">Tech Corp Inc.</span>
-                    <span class="term-grade">Grade: A</span>
-                  </div>
-                  <div class="term-status">
-                    <span class="status-badge completed">Report Submitted</span>
-                    <button class="quick-view-btn">Quick View</button>
-                  </div>
-                </div>
-                <div class="term-item">
-                  <div class="term-info">
-                    <span class="term-season">Summer 2023</span>
-                    <span class="term-employer">Innovation Labs</span>
-                    <span class="term-grade">Grade: A-</span>
-                  </div>
-                  <div class="term-status">
-                    <span class="status-badge completed">Report Submitted</span>
-                    <button class="quick-view-btn">Quick View</button>
-                  </div>
-                </div>
-                <div class="term-item">
-                  <div class="term-info">
-                    <span class="term-season">Winter 2023</span>
-                    <span class="term-employer">StartupXYZ</span>
-                    <span class="term-grade">Grade: B+</span>
-                  </div>
-                  <div class="term-status">
-                    <span class="status-badge completed">Report Submitted</span>
-                    <button class="quick-view-btn">Quick View</button>
-                  </div>
-                </div>
-                <div class="term-item">
-                  <div class="term-info">
-                    <span class="term-season">Fall 2022</span>
-                    <span class="term-employer">Global Systems</span>
-                    <span class="term-grade">Grade: A</span>
-                  </div>
-                  <div class="term-status">
-                    <span class="status-badge completed">Report Submitted</span>
-                    <button class="quick-view-btn">Quick View</button>
-                  </div>
-                </div>
+              <div class="terms-list" id="studentDashboardRecentWorkTermsList">
+                <div class="applications-empty-state">Loading work terms...</div>
               </div>
             </div>
           </div>
 
           <div class="content-column">
-            <div class="column-card">
-              <h2 class="column-title">Quick Actions</h2>
-              <div class="actions-list">
-                <button class="action-btn" data-action="contact">
-                  <span class="action-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  </span>
-                  <span class="action-text">Contact Coordinator</span>
-                </button>
-                <button class="action-btn" data-nav="work-term-reports">
-                  <span class="action-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                  </span>
-                  <span class="action-text">Submit Work-term Report</span>
-                </button>
-                <button class="action-btn" data-nav="applications">
-                  <span class="action-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                  </span>
-                  <span class="action-text">View Applications</span>
-                </button>
-                <button class="action-btn" data-nav="evaluation-reports">
-                  <span class="action-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                  </span>
-                  <span class="action-text">View Evaluation Reports</span>
-                </button>
-                <button class="action-btn" data-nav="profile">
-                  <span class="action-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  </span>
-                  <span class="action-text">Update Profile</span>
-                </button>
+            <div class="dashboard-side-stack">
+              <div class="column-card">
+                <h2 class="column-title">Coordinator Messages</h2>
+                <div class="terms-list" id="studentDashboardAnnouncementsList">
+                  <div class="applications-empty-state">Loading coordinator messages...</div>
+                </div>
+              </div>
+
+              <div class="column-card">
+                <h2 class="column-title">Quick Actions</h2>
+                <div class="actions-list">
+                  <button class="action-btn" data-action="contact">
+                    <span class="action-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </span>
+                    <span class="action-text">Contact Coordinator</span>
+                  </button>
+                  <button class="action-btn" data-nav="work-term-reports">
+                    <span class="action-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </span>
+                    <span class="action-text">Submit Work-term Report</span>
+                  </button>
+                  <button class="action-btn" data-nav="applications">
+                    <span class="action-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </span>
+                    <span class="action-text">View Applications</span>
+                  </button>
+                  <button class="action-btn" data-nav="evaluation-reports">
+                    <span class="action-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    </span>
+                    <span class="action-text">View Evaluation Reports</span>
+                  </button>
+                  <button class="action-btn" data-nav="profile">
+                    <span class="action-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </span>
+                    <span class="action-text">Update Profile</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -219,7 +185,12 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   <script src="../assets/js/firebase.js"></script>
+  <script src="../assets/js/pseudo-mail.js"></script>
+  <script src="../assets/js/student-assignment.js"></script>
   <script src="../assets/js/navigation.js"></script>
+  <script src="../assets/js/student-applications.js"></script>
+  <script src="../assets/js/student-work-term-reports.js"></script>
+  <script src="../assets/js/student-contact-coordinator.js"></script>
   <script src="../assets/js/student.js"></script>
 </body>
 </html>

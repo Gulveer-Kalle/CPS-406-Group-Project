@@ -1,0 +1,76 @@
+<div class="subscreen-container">
+  <div class="content-header">
+    <h1>Contact Coordinator</h1>
+    <p class="content-subtitle">Send a message to your assigned coordinator using the same email-style layout.</p>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="content-column">
+      <div class="column-card announcement-compose-card">
+        <div class="announcement-compose-toolbar">
+          <span class="profile-chip">Message</span>
+          <span class="profile-chip subtle">Coordinator Contact</span>
+        </div>
+
+        <form id="studentCoordinatorContactForm" class="announcement-compose-form">
+          <div class="announcement-compose-field">
+            <label for="studentCoordinatorContactTo">To</label>
+            <div id="studentCoordinatorContactTo" class="announcement-compose-display">Loading coordinator...</div>
+          </div>
+
+          <div class="announcement-compose-field">
+            <label for="studentCoordinatorContactCc">Cc</label>
+            <div id="studentCoordinatorContactCc" class="announcement-compose-display">None</div>
+          </div>
+
+          <div class="announcement-compose-field">
+            <label for="studentCoordinatorContactSubject">Subject</label>
+            <input
+              id="studentCoordinatorContactSubject"
+              class="announcement-compose-input"
+              type="text"
+              placeholder="Enter message subject"
+            >
+          </div>
+
+          <div class="announcement-compose-field">
+            <label for="studentCoordinatorContactMessage">Message</label>
+            <textarea
+              id="studentCoordinatorContactMessage"
+              class="announcement-compose-input announcement-compose-textarea"
+              rows="10"
+              placeholder="Write your message to your coordinator..."
+            ></textarea>
+          </div>
+
+          <div class="announcement-compose-actions">
+            <button type="submit" class="btn-primary" id="studentCoordinatorContactSendBtn">Send Email</button>
+            <button type="button" class="quick-view-btn" id="studentCoordinatorContactPreviewBtn">Preview</button>
+            <button type="button" class="quick-view-btn" id="studentCoordinatorContactCancelBtn">Cancel</button>
+          </div>
+        </form>
+
+        <div id="studentCoordinatorContactStatus" class="announcement-compose-status" hidden></div>
+      </div>
+    </div>
+
+    <div class="content-column">
+      <div class="column-card announcement-preview-card" id="studentCoordinatorContactPreviewCard">
+        <h2 class="column-title">Preview</h2>
+        <div class="announcement-preview-shell">
+          <div class="announcement-preview-header">
+            <div class="announcement-preview-avatar">ST</div>
+            <div class="announcement-preview-header-copy">
+              <span class="announcement-preview-from">Student Message</span>
+              <span id="studentCoordinatorContactPreviewTo" class="announcement-preview-recipient">To: Assigned Coordinator</span>
+            </div>
+          </div>
+          <div class="announcement-preview-meta">
+            <span id="studentCoordinatorContactPreviewSubject">Subject: -</span>
+          </div>
+          <div id="studentCoordinatorContactPreviewBody" class="announcement-preview-body">Your message preview will appear here.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
